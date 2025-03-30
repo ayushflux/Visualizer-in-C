@@ -17,6 +17,7 @@ This program currently supports the following mathematical functions:
 Any function other than these will plot just the argument of the function
 
 ## Limitations
+- The plots may appear a bit jittered
 - Only **single-variable functions** are supported at the moment.
 - Multi-variable or parametric equations are **not yet supported**.
 - Don't put unnecessary right paranthesis `)` it may crash the program.
