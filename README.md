@@ -43,7 +43,7 @@ cd ../..```
    ./plotter
    ```
 ## Running on Windows
-- Extract and run the `visualizer.exe` file   
+- Open the `visualizer.exe` file  inside `./visualizer` 
 
 ## Future Plans
 - Add multi-variable function support.
