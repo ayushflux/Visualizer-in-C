@@ -34,7 +34,8 @@ mkdir build && cd build
 cmake .. -DPLATFORM=Desktop
 make -j$(nproc)
 sudo make install
-cd ../..```
+cd ../..
+```
 ## How to Run
 1. Compile the program with:
    ```sh
