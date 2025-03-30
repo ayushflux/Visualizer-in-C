@@ -1,4 +1,5 @@
-# Raylib Math Function Plotter
+# Visualizer in C
+Using Raylib
 
 ## Supported Functions
 This program currently supports the following mathematical functions:
@@ -51,5 +52,3 @@ cd ../..```
 - Implement additional mathematical functions.
 
 Please suggest improvements!
-
-# Visualizer-in-C
