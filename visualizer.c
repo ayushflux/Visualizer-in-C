@@ -157,7 +157,7 @@ int present(char* a, char b){   //substring checking as strchr returns pointers 
     }return 0;
 }
 void DrawFunction(float drawProgress, char* a);
-double parser(char* dr, double sub){ //parsing the equation string --pending: MODULARIZATION
+double parser(char* dr, double sub){ //pending: MODULARIZATION
     Token store[100];
     char sr[strlen(dr)+5];  //work-around to avoid some errors
     sr[0]='(';
@@ -176,6 +176,8 @@ double parser(char* dr, double sub){ //parsing the equation string --pending: MO
     int prev=0;
     int count_token=0;
     while(sr[sr_pos]!='\0'){
+        if(sr[sr_pos]==' ')sr_pos++;
+        prev=sr_pos;
         int cut_point=prev;
         while(isdigit(sr[sr_pos])||sr[sr_pos]=='.'){
             cut_point++;
@@ -203,7 +205,6 @@ double parser(char* dr, double sub){ //parsing the equation string --pending: MO
             sr_pos++;
         }
         cut_point=sr_pos;
-        if(sr[sr_pos]==' ')sr_pos++;
         if(isalpha(sr[sr_pos])){
             if(isalpha(sr[sr_pos+1])){  
                 int inc;  
@@ -280,7 +281,8 @@ double parser(char* dr, double sub){ //parsing the equation string --pending: MO
             count_token++;
             sr_pos++;
         }
-        prev=sr_pos;
+        if(sr[sr_pos]!=')'&&sr[sr_pos]!='('&&!(isalpha(sr[sr_pos]))&&!(isdigit(sr[sr_pos])&&sr[sr_pos]!='.'&&!present("+-*/^",sr[sr_pos])))sr_pos++;
+
     }
     stack_init(&stack);
     Token answer[count_token];
@@ -311,6 +313,7 @@ double parser(char* dr, double sub){ //parsing the equation string --pending: MO
                 iterate=stack_pop(&stack);
             }
         }
+        
 
     }
     while(stack.top!=-1){
@@ -337,6 +340,7 @@ double parser(char* dr, double sub){ //parsing the equation string --pending: MO
             evaluate_push(&evaluate, answer[i].value);
         }
         if(answer[i].type==FUNCTION){
+            
             double temp_1=evaluate_pop(&evaluate);
             evaluate_push(&evaluate, operations[answer[i].sign](temp_1));
         }
